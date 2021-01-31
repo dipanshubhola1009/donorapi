@@ -47,7 +47,7 @@ router.post('/login',async (req,res)=>{
      const matched = await bcrypt.compare(req.body.password, user.password);
 
      if(matched){
-         const token = jwt.sign({_id: user._id, name: user.name} , process.env.TOKENSECRET);
+         const token = jwt.sign({_id: user._id, name: user.name} ,"123abc123abc");
          res.header('auth-token' , token);
          return res.status(202).send("password is right");
      }

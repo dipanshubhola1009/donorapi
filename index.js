@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 //Connection to DB
-mongoose.connect(process.env.DBURL,
+mongoose.connect("mongodb+srv://dbUser:Bhola1009@donordata.nctyi.mongodb.net/Donor?retryWrites=true&w=majority",
     { 
     useNewUrlParser: true ,
     useUnifiedTopology: true

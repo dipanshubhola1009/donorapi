@@ -7,7 +7,7 @@ exports.module = function(req, res, next){
     }
 
     try{
-    const user = jwt.verify(token, process.env.TOKENSECRET);
+    const user = jwt.verify(token, "123abc123abc");
     console.log(user);
     req.user = user;
     next();
