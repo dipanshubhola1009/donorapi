@@ -24,6 +24,6 @@ const authrouter = require('./Routes/auth');
 app.use('/Donor',authrouter );
 
 const DonorData = require('./routes/DonorData');
-app.use('/Donor/data',DonorData);
+app.use('/',DonorData);
 
 app.listen(3000 || process.env.PORT);
