@@ -12,7 +12,7 @@ if (port == null || port == "") {
 
 
 //Connection to DB
-mongoose.connect("mongodb+srv://dbUser:Bhola1009@donordata.nctyi.mongodb.net/Donor?retryWrites=true&w=majority",
+mongoose.connect(process.env.DBURL,
     { 
     useNewUrlParser: true ,
     useUnifiedTopology: true
