@@ -20,10 +20,10 @@ app.use(express.json());
 
 //Routes implementation
 
-const authrouter = require('./Routes/auth');
+const authrouter = require('../Routes/auth');
 app.use('/Donor',authrouter );
 
-const DonorData = require('./routes/DonorData');
+const DonorData = require('../routes/DonorData');
 app.use('/',DonorData);
 
 app.listen(3000 || process.env.PORT);
