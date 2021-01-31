@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
 //Dot env
 const dotenv = require('dotenv');
 dotenv.config();
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
 
 //Connection to DB
 mongoose.connect("mongodb+srv://dbUser:Bhola1009@donordata.nctyi.mongodb.net/Donor?retryWrites=true&w=majority",
@@ -26,4 +31,6 @@ app.use('/Donor',authrouter );
 const DonorData = require('./routes/DonorData');
 app.use('/',DonorData);
 
-app.listen(3000 || process.env.PORT);
+app.listen(port, function() {
+    console.log("Server started on port 3000");
+  });
