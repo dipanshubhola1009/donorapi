@@ -9,22 +9,43 @@ const userSchema = new mongoose.Schema({
        type: String,
        required:true
    },
-   password:{
+   city: {
        type: String,
        required:true
    },
-   age:{
-       type: Number,
-       require: true
-   },
-   sex:{
-       type:String,
+   pincode:{
+       type: String,
        required: true
    },
+   phone:{
+       type: String,
+       max:10,
+       required:true
+   },
+  /* password:{
+       type: String,
+       required:true
+   },
+   
+   covid:{
+       type:Boolean,
+       default:false
+   },
+     available:{
+       type:Boolean,
+       default:true
+   },
+   */
+   age:{
+       type: String,
+       require: true
+   },
+   
    blood:{
        type: String,
        required: true
-   }
+   },
+ 
 });
 
 

@@ -14,14 +14,20 @@ router.get('',(req,res)=>{
     })
 })
 router.post('/',(req,res)=>{
-    User.find({
-        blood: req.body.blood
-    },
+    console.log(req.body)
+    const query = {
+        blood : req.body.blood ? req.body.blood : "",
+        pincode: req.body.pincode.length > 1 ? req.body.pincode : null,
+    }
+    console.log(query)
+    User.find(query,
     (err,result)=>{
        if(err){
+           res.status(401);
            res.send(err);
        } 
        if(result){
+           res.status(200);
            res.json(result);
        }
     })

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+const cors  = require('cors')
 //Dot env
 const dotenv = require('dotenv');
 dotenv.config();
@@ -22,7 +22,7 @@ mongoose.connect("mongodb+srv://dbUser:Bhola1009@donordata.nctyi.mongodb.net/Don
 });
 
 app.use(express.json());
-
+app.use(cors());
 //Routes implementation
 
 const authrouter = require('./routes/auth');

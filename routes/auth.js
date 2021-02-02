@@ -12,20 +12,24 @@ router.post('/register', async (req, res)=>{
     }
     //----------------------
 
-
+    console.log(req.body)
     //password to hash
-    const salt = await bcrypt.genSalt(10);
-    const hastpassword = await bcrypt.hash(req.body.password, salt);
+ //   const salt = await bcrypt.genSalt(10);
+ //   const hastpassword = await bcrypt.hash(req.body.password, salt);
     //------------------------
 
 
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: hastpassword,
+      //  password: hastpassword,
+        phone: req.body.phone,
+        pincode: req.body.pincode,
+        city: req.body.city,
         age: req.body.age,
-        sex: req.body.sex,
-        blood: req.body.blood
+        blood: req.body.blood,
+     //   covid: req.body.covid,
+      //  available: req.body.available
     });
 
      try{
@@ -37,7 +41,7 @@ router.post('/register', async (req, res)=>{
      }
 });
 
-
+/*
 router.post('/login',async (req,res)=>{
      const user = await User.findOne({email: req.body.email});
      if(!user){
@@ -53,5 +57,5 @@ router.post('/login',async (req,res)=>{
      }
      res.status(400).send("wrong password");
 });
-
+*/
 module.exports = router;
