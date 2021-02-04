@@ -6,11 +6,11 @@ const nodemailer = require('nodemailer');
 
 
 
-
 //email 
 
 const transporter = nodemailer.createTransport({
-    service : 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
     auth: {
         user: 'dipanshubhola321@gmail.com',
         pass: '@Bhola1009'
@@ -20,6 +20,7 @@ const transporter = nodemailer.createTransport({
         }
     
 });
+
 
 
 
@@ -78,13 +79,16 @@ router.post('/register', async (req, res)=>{
 
      try{
          const newUser = await user.save();
-         res.send(newUser);
          console.log(mail);
          transporter.sendMail(mail, (err,res)=>{
              if(err){
-                 console.log(err);
-             }
-         });
+                  console.log(err);
+            }
+            if(res){
+                console.log(res);
+            }
+            });
+            res.send(newUser);
      }  catch(err){
          console.log(err);
          res.status(400).send(err);
