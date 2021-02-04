@@ -2,6 +2,26 @@ const router = require('express').Router();
 const User = require('../modal/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+
+
+
+
+//email 
+
+const transporter = nodemailer.createTransport({
+    service : 'gmail',
+    auth: {
+        user: 'dipanshubhola321@gmail.com',
+        pass: '@Bhola1009'
+    }  ,
+     tls:{
+        rejectUnauthorized: false
+        }
+    
+});
+
+
 
 //registeration
 router.post('/register', async (req, res)=>{
@@ -12,11 +32,35 @@ router.post('/register', async (req, res)=>{
     }
     //----------------------
 
-    console.log(req.body)
+    const mail = {
+        from : "dipanshubhola1009@gmail.com",
+        to : req.body.email,
+        subject:"from blooodonor",
+        html: ` 
+        <p>
+         Dear  ${req.body.name} ,
+         <br>Thankyou for registering with Blooodonor.
+         <br>Blood is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets and plasma — which can be used individually for patients with specific conditions
+        <br>
+        <b>Your Details: </b>
+        <ul>
+        <li>Blood:  ${req.body.blood}</li>
+        <li>Age: ${req.body.age}</li>
+        <li>${req.body.city}  - ${req.body.pincode}</li>
+        </ul>
+         <br>
+         <br>
+         <p> Sincerely,<br>
+          Dipanshu Bhola<br>
+         <p> `
+    }
+
+
     //password to hash
- //   const salt = await bcrypt.genSalt(10);
- //   const hastpassword = await bcrypt.hash(req.body.password, salt);
-    //------------------------
+    /*
+   const salt = await bcrypt.genSalt(10);
+  const hastpassword = await bcrypt.hash(req.body.password, salt);
+    */
 
 
     const user = new User({
@@ -35,6 +79,12 @@ router.post('/register', async (req, res)=>{
      try{
          const newUser = await user.save();
          res.send(newUser);
+         console.log(mail);
+         transporter.sendMail(mail, (err,res)=>{
+             if(err){
+                 console.log(err);
+             }
+         });
      }  catch(err){
          console.log(err);
          res.status(400).send(err);
