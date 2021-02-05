@@ -15,12 +15,8 @@ router.get('',(req,res)=>{
 })
 router.post('/',(req,res)=>{
     console.log(req.body)
-    const query = {
-        blood : req.body.blood ? req.body.blood : "",
-        pincode: req.body.pincode.length > 1 ? req.body.pincode : null,
-    }
-    console.log(query)
-    User.find(query,
+
+    User.find(req.body,
     (err,result)=>{
        if(err){
            res.status(401);
