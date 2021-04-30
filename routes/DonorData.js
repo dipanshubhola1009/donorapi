@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const tokenVerify = require('./tokenVerify');
+const tokenVerify = require('../Extra/tokenVerify');
 const User = require('../modal/User');
 
 
 router.get('',(req,res)=>{
-     User.find({}, (err, result)=>{
+     User.find().sort({date : -1}).then( (result,err)=>{
          if(err){
              console.log(err)
          }

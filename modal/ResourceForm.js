@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const ResourceForm = new mongoose.Schema({
    name:{
        type: String,
        required: true,
    },
    email:{
        type: String,
-       required:true
    },
-   city: {
+   city:{
        type: String,
-       required:true
+       required: true
    },
-   pincode:{
+   category :{
        type: String,
        required: true
    },
@@ -22,25 +21,17 @@ const userSchema = new mongoose.Schema({
        max:10,
        required:true
    },
-   age:{
-       type: String,
-       require: true
-   },
-   
-   blood:{
-       type: String,
-       required: true
-   },
    date : {
        type : String,
        required: true
    },
-   curdate : {
-       type:String,
+   des : {
+       type: String,
+       required: true
    }
  
 });
 
 
 
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('Resource',ResourceForm);

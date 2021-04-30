@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const SEVA = new mongoose.Schema({
    name:{
        type: String,
        required: true,
@@ -9,24 +9,11 @@ const userSchema = new mongoose.Schema({
        type: String,
        required:true
    },
-   city: {
-       type: String,
-       required:true
-   },
-   pincode:{
-       type: String,
-       required: true
-   },
    phone:{
        type: String,
        max:10,
        required:true
-   },
-   age:{
-       type: String,
-       require: true
-   },
-   
+   },  
    blood:{
        type: String,
        required: true

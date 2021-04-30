@@ -41,7 +41,7 @@ router.post('/register', async (req, res)=>{
         <p>
          Dear  ${req.body.name} ,
          <br>Thankyou for registering with Blooodonor.
-         <br>Blood is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets and plasma — which can be used individually for patients with specific conditions
+         <br>Blood/Plasma is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets and plasma — which can be used individually for patients with specific conditions
         <br>
         <b>Your Details: </b>
         <ul>
@@ -52,7 +52,8 @@ router.post('/register', async (req, res)=>{
          <br>
          <br>
          <p> Sincerely,<br>
-          Dipanshu Bhola<br>
+          BLOODONOR<br>
+          contact-us: 9034391333
          <p> `
     }
 
@@ -67,14 +68,13 @@ router.post('/register', async (req, res)=>{
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-      //  password: hastpassword,
         phone: req.body.phone,
         pincode: req.body.pincode,
         city: req.body.city,
         age: req.body.age,
         blood: req.body.blood,
-     //   covid: req.body.covid,
-      //  available: req.body.available
+        date: req.body.date,
+        curdate : new Date()
     });
 
      try{
